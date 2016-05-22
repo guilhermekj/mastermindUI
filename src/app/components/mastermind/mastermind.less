@@ -1,0 +1,84 @@
+.mastermind{
+
+    .current-stage td{
+      background-color: @panel-footer-bg;
+    }
+
+    .current-stage .mm-field i{
+      cursor: pointer;
+    }
+
+    .selected-bullet .mm-field i{
+      cursor: pointer;
+      opacity: 0.5;
+      border: hidden 3px;
+    }
+
+    .selected-bullet .mm-field i:hover, .mm-field > i.selected{
+      opacity: 1;
+      border: solid 3px;
+    }
+
+    .progress{
+        margin-bottom: 0;
+    }
+
+    .mm-field > i, .mm-partial i{
+        display: block;
+        border: solid 1px;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+    }
+
+    .mm-partial i{
+      background-color: #DFBB87;
+    }
+
+    .mm-partial i.black{
+      background: black;
+    }
+
+    .mm-partial i.white{
+      background: white;
+    }
+
+    .mm-stage{
+        line-height: 30px;
+    }
+
+    .mm-partial .result{
+        max-width: 60px;
+    }
+
+    .mm-partial i{
+        display: inline-block;
+        height: 15px;
+        width: 15px;
+    }
+
+    .red{
+        background-color: #e74c3c;
+    }
+    .green{
+        background-color: #2ecc71;
+    }
+    .blue{
+        background-color: #3498db;
+    }
+    .yellow{
+        background-color: #f1c40f;
+    }
+    .orange{
+        background-color: #e67e22;
+    }
+    .purple{
+        background-color: #9b59b6;
+    }
+    .cyan{
+        background-color: #1abc9c;
+    }
+    .magenta{
+        background-color: #de6bae;
+    }
+}

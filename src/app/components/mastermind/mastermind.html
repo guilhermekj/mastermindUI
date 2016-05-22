@@ -1,0 +1,51 @@
+<article  class="mastermind">
+  <div class="text-right">
+			<button type="button" ng-disabled="mastermind.isProcessing" ng-click="mastermind.promptNew()" class="btn btn-info btn-lg">Start new game! <i class="fa fa-hand-scissors-o" aria-hidden="true"></i></button>
+	</div>
+  <hr>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-xs-4">
+          Mastermind Online
+        </div>
+        <div class="col-md-8">
+          <div class="progress" ng-show="mastermind.isPlaying" title="Time remaining">
+            <uib-progressbar animate="true" value="mastermind.progress" type="info"><b>{{mastermind.progress}}%</b></uib-progressbar>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="mm-panel">
+        <table class="table table-responsive">
+          <tbody>
+            <tr ng-repeat="stage in mastermind.service.stages" class="{{mastermind.currentStage == stage ? 'current-stage' : ''}}" >
+              <td class="mm-stage text-center">{{stage}}</td>
+              <td ng-repeat="bullet in mastermind.service.bullets" class="mm-field">
+                <i ng-click="mastermind.guess(stage, bullet.item)" class="empty" ng-class="mastermind.guessBullets[stage][bullet.item] ? mastermind.guessBullets[stage][bullet.item].color : '' "></i>
+              </td>
+              <td class="mm-partial">
+                  <div class="text-center result">
+                    <i ng-repeat="bullet in mastermind.service.bullets" ng-class="[mastermind.results[stage-1].exact >= bullet.item ? 'black' : '', bullet.item > mastermind.results[stage-1].exact && bullet.item <= mastermind.results[stage-1].exact + mastermind.results[stage-1].near ? 'white' : '']" >
+                    </i>
+                  </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div ng-show="mastermind.isPlaying" class="row selected-bullet">
+        <div ng-repeat="bullet in mastermind.service.bullets" class="col-xs-1 mm-field">
+          <i ng-click="mastermind.selected = bullet" ng-class="[bullet.color, bullet.color == mastermind.selected.color ? 'selected' : '']"></i>
+        </div>
+        <div class="col-xs-4 text-center">
+          <button ng-disabled="mastermind.isProcessing" type="button" class="btn btn-default" ng-click="mastermind.check()"><i class="fa fa-check" aria-hidden="true"></i> Check</button>
+          <button type="button" class="btn btn-default" title="How to play" ng-click="mastermind.help()" ><i class="fa fa-question-circle-o" aria-hidden="true"></i> Help</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
